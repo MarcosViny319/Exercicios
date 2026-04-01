@@ -1,0 +1,75 @@
+package imobiliaria;
+
+public class Imovel {
+    protected String endereco;
+    protected double valor;
+
+    public Imovel(String endereco, double valor) {
+        this.endereco = endereco;
+        this.valor = valor;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    // Método que pode ser sobrescrito
+    public double calcularValorFinal() {
+        return valor;
+    }
+
+    public void exibirDados() {
+        System.out.println("Endereço: " + endereco);
+        System.out.println("Valor base: R$ " + valor);
+    }
+}
+
+package imobiliaria;
+
+public class ImovelNovo extends Imovel {
+    private double adicional;
+
+    public ImovelNovo(String endereco, double valor, double adicional) {
+        super(endereco, valor);
+        this.adicional = adicional;
+    }
+
+    @Override
+    public double calcularValorFinal() {
+        return valor + adicional;
+    }
+
+    @Override
+    public void exibirDados() {
+        super.exibirDados();
+        System.out.println("Adicional: R$ " + adicional);
+        System.out.println("Valor final: R$ " + calcularValorFinal());
+    }
+}
+
+package imobiliaria;
+
+public class ImovelUsado extends Imovel {
+    private double desconto;
+
+    public ImovelUsado(String endereco, double valor, double desconto) {
+        super(endereco, valor);
+        this.desconto = desconto;
+    }
+
+    @Override
+    public double calcularValorFinal() {
+        return valor - desconto;
+    }
+
+    @Override
+    public void exibirDados() {
+        super.exibirDados();
+        System.out.println("Desconto: R$ " + desconto);
+        System.out.println("Valor final: R$ " + calcularValorFinal());
+    }
+}
