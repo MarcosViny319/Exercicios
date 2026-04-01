@@ -1,0 +1,109 @@
+package exercicio2b;
+
+public class Veiculo {
+    protected String cor;
+    protected String placa;
+
+    public Veiculo(String cor, String placa) {
+        this.cor = cor;
+        this.placa = placa;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+}
+
+package exercicio2b;
+
+public class Motocicleta extends Veiculo {
+    public Motocicleta(String cor, String placa) {
+        super(cor, placa);
+    }
+}
+
+package exercicio2b;
+
+public class CarroDePasseio extends Veiculo {
+    public CarroDePasseio(String cor, String placa) {
+        super(cor, placa);
+    }
+}
+
+package exercicio2b;
+
+public class UtilitarioEsportivo extends Veiculo {
+    public UtilitarioEsportivo(String cor, String placa) {
+        super(cor, placa);
+    }
+}
+
+package exercicio2b;
+
+public class Caminhonete extends Veiculo {
+    public Caminhonete(String cor, String placa) {
+        super(cor, placa);
+    }
+}
+
+package exercicio2b;
+
+public class Caminhao extends Veiculo {
+    public Caminhao(String cor, String placa) {
+        super(cor, placa);
+    }
+}
+
+package exercicio2b;
+
+public class Atendimento {
+    private String servico;
+    private Veiculo veiculo;
+
+    public Atendimento(String servico, Veiculo veiculo) {
+        this.servico = servico;
+        this.veiculo = veiculo;
+    }
+
+    public String getServico() {
+        return servico;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+}
+
+package exercicio2b;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LavaJato {
+    private List<Atendimento> atendimentos;
+
+    public LavaJato() {
+        atendimentos = new ArrayList<>();
+    }
+
+    public void atender(String servico, Veiculo veiculo) {
+        Atendimento atendimento = new Atendimento(servico, veiculo);
+        atendimentos.add(atendimento);
+        System.out.println("Atendimento adicionado: " + servico);
+    }
+
+    public void executar_proximo_servico() {
+        if (atendimentos.isEmpty()) {
+            System.out.println("Nenhum atendimento na fila.");
+            return;
+        }
+
+        Atendimento atendimento = atendimentos.remove(0);
+        System.out.println("Executando serviço: " + atendimento.getServico() +
+                " para o veículo placa: " + atendimento.getVeiculo().getPlaca());
+    }
+}
