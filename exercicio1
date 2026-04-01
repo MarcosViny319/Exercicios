@@ -1,0 +1,87 @@
+package com.mycompany.exercicio1;
+
+public class Funcionario {
+    protected String nome;
+    protected double salario;
+
+    public Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
+    public void addAumento(double valor) {
+        this.salario += valor;
+    }
+
+    public double ganhoAnual() {
+        return salario * 12;
+    }
+
+    public void exibeDados() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Salário: " + salario);
+    }
+}
+
+package com.mycompany.exercicio1;
+
+public class Assistente extends Funcionario {
+    private int matricula;
+
+    public Assistente(String nome, double salario, int matricula) {
+        super(nome, salario);
+        this.matricula = matricula;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    @Override
+    public void exibeDados() {
+        super.exibeDados();
+        System.out.println("Matrícula: " + matricula);
+    }
+}
+
+package com.mycompany.exercicio1;
+
+public class Tecnico extends Assistente {
+    private double bonus;
+
+    public Tecnico(String nome, double salario, int matricula, double bonus) {
+        super(nome, salario, matricula);
+        this.bonus = bonus;
+    }
+
+    @Override
+    public double ganhoAnual() {
+        return (salario + bonus) * 12;
+    }
+}
+
+package com.mycompany.exercicio1;
+
+public class Administrativo extends Assistente {
+    private String turno; // dia ou noite
+    private double adicionalNoturno;
+
+    public Administrativo(String nome, double salario, int matricula, String turno, double adicionalNoturno) {
+        super(nome, salario, matricula);
+        this.turno = turno;
+        this.adicionalNoturno = adicionalNoturno;
+    }
+
+    @Override
+    public double ganhoAnual() {
+        if (turno.equalsIgnoreCase("noite")) {
+            return (salario + adicionalNoturno) * 12;
+        } else {
+            return salario * 12;
+        }
+    }
+}
