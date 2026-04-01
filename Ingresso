@@ -1,0 +1,73 @@
+package ingresso;
+
+public class Ingresso {
+    protected double valor;
+
+    public Ingresso(double valor) {
+        this.valor = valor;
+    }
+
+    public void imprimeValor() {
+        System.out.println("Valor do ingresso: R$ " + valor);
+    }
+}
+
+package ingresso;
+
+public class VIP extends Ingresso {
+    protected double valorAdicional;
+
+    public VIP(double valor, double valorAdicional) {
+        super(valor);
+        this.valorAdicional = valorAdicional;
+    }
+
+    public double getValorVIP() {
+        return valor + valorAdicional;
+    }
+}
+
+package ingresso;
+
+public class Normal extends Ingresso {
+
+    public Normal(double valor) {
+        super(valor);
+    }
+
+    public void imprimeTipo() {
+        System.out.println("Ingresso Normal");
+    }
+}
+
+package ingresso;
+
+public class CamaroteInferior extends VIP {
+    private String localizacao;
+
+    public CamaroteInferior(double valor, double adicional, String localizacao) {
+        super(valor, adicional);
+        this.localizacao = localizacao;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void imprimeLocalizacao() {
+        System.out.println("Localização: " + localizacao);
+    }
+}
+
+package ingresso;
+
+public class CamaroteSuperior extends VIP {
+
+    public CamaroteSuperior(double valor, double adicional) {
+        super(valor, adicional);
+    }
+
+    public double getValorCamaroteSuperior() {
+        return getValorVIP();
+    }
+}
